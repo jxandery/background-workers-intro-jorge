@@ -1,4 +1,8 @@
+require 'resque/server'
+
 Rails.application.routes.draw do
+  mount Resque::Server.new, at: "/resque" # the url /resque is completely arbitrary. you can use whatever you like here, such as 'background jobs'
+
   resources :articles
   resources :comments
   resource  :account,   only: [:show] do
